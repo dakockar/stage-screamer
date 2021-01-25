@@ -1,11 +1,11 @@
-canvas = document.querySelector("canvas");
-ctx = this.canvas.getContext("2d");
+// canvas = document.querySelector("canvas");
+// ctx = this.canvas.getContext("2d");
 
 const game = new Game();
+// let startButton = document.querySelector("button");
 
 
 function buildSplashScreen() {
-
 
 }
 
@@ -20,36 +20,36 @@ function buildGameOverScreen() {
 
 }
 
-// window.addEventListener("load", () => {
-//     // buildSplashScreen();
+window.addEventListener("load", () => {
+    buildSplashScreen();
 
-// })
+})
 
 
-let isLeftArrow = false;
-let isRightArrow = false;
-let isShooting = false;
-let shotOnce = false;
+let isUpArrow = false;
+let isDownArrow = false;
 let qIsPressed = false;
 
 
 document.addEventListener("keydown", (event) => {
+
+    // if (event.key === "Enter") 
 
     if (event.key === "q") {
         qIsPressed = true;
     }
 
     if (event.key === "ArrowDown") {
-        isRightArrow = true;
-        isLeftArrow = false;
+        isDownArrow = true;
+        isUpArrow = false;
 
         if (game.rotateAngle >= 5 && game.rotateAngle < 80) {
             game.rotateAngle += 5;
         }
     }
     else if (event.key === "ArrowUp") {
-        isRightArrow = false;
-        isLeftArrow = true;
+        isDownArrow = false;
+        isUpArrow = true;
 
         if (game.rotateAngle > 5 && game.rotateAngle <= 80) {
             game.rotateAngle -= 5;
@@ -60,8 +60,7 @@ document.addEventListener("keydown", (event) => {
     // keydown is sending signal continuously, not only once. how to solve this?
 
     if (event.key === " ") {
-        isShooting = true;
-
+        game.shootPressed();
     }
 
     // console.log(event.key);
@@ -70,20 +69,7 @@ document.addEventListener("keydown", (event) => {
 
 
 
-// document.addEventListener("keydown", (event) => {
-//     if (event.key === " ") {
-//         isShooting = true;
-//         setTimeout(() => {
-//             isShooting = false;
-//         }, 200);
-//     }
-
-// }, { once: true });
-
-
-
 document.addEventListener("keyup", (event) => {
-
     if (event.key === " ") {
         isShooting = false;
         // console.log("space keyup");
@@ -91,7 +77,6 @@ document.addEventListener("keyup", (event) => {
 })
 
 
-buildGameScreen();
 
-// let enemy = new Enemy(100, 100, ctx);
-// enemy.draw();
+
+// buildGameScreen();

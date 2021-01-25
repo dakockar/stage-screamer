@@ -3,5 +3,17 @@ canvas {
 }
 
 #container {
-    margin: 20px 200px;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* margin: 20px 200px; */
+    /* padding: */
+}
+
+button {
+    width: 60px;
+    padding: 5px;
+    margin: 20px;
 }

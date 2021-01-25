@@ -3,7 +3,7 @@ class Enemy {
         this.x = x;
         this.y = y;
         this.ctx = ctx;
-        this.speed = 5;
+        this.speed = 10;
         this.isCollided = false;
         this.images = [];
 
@@ -22,16 +22,5 @@ class Enemy {
     move() {
         this.y += this.speed;
     }
-
-    vanish() {
-
-        // this.img.style.opacity = "0.5";
-
-        this.img.src = "";
-        delete this;
-        // console.log(this);
-    }
-
-
 
 }

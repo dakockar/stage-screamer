@@ -9,7 +9,8 @@ class Game {
         this.speakerLeft = new Speaker(0, 620, this.ctx);
         this.speakerRight = new Speaker(420, 620, this.ctx);
         this.rotateAngle = 15;
-        this.enemies = [new Enemy(200, -80, this.ctx)];
+        this.enemies = [];
+        this.bullets = [];
     }
 
     startGame() {
@@ -21,6 +22,12 @@ class Game {
                 this.drawCanvas();
             });
         }, 50);
+
+        this.intervalID2 = setInterval(() => {
+            let randomNum = Math.floor(Math.random() * (this.canvas.width - 140)) + 30;
+            this.enemies.push(new Enemy(randomNum, -50, this.ctx));
+        }, 1000)
+
     }
 
     drawCanvas() {
@@ -39,61 +46,58 @@ class Game {
     }
 
     updateCanvas() {
-        let randomNum = Math.floor(Math.random() * (canvas.width - 140)) + 30;
-        if (isShooting) {
-            this.speakerLeft.shoot();
-            this.speakerRight.shoot();
-        }
+
+        this.checkCollisions();
+
+        this.enemies = this.enemies.filter(elem => !elem.isCollided);
+        this.bullets = this.bullets.filter(elem => elem.y > 0 && !elem.isCollided);
 
         for (let i = 0; i < this.enemies.length; i++) {
-
-            // if (isShooting) {
-            //     this.speakerLeft.shoot(i);
-            //     this.speakerRight.shoot(i);
-            //     // isShooting = false;
-            // }
-
-
-            if (this.enemies[i].y === 200) {
-                this.enemies.push(new Enemy(randomNum, -50, this.ctx));
-            }
-
-            this.addEnemy(i);
-
-
-
-
-
-            if (this.enemies[i].y > 600) {
-                this.enemies[i].vanish();
-                // console.log(this.enemies);
-            }
-
-            // we don't want the array to become too big
-            if (this.enemies.length > 8) {
-                this.enemies.shift();
-            }
-
-
-
+            this.enemies[i].draw();
+            this.enemies[i].move();
         }
+
+        for (let i = 0; i < this.bullets.length; i++) {
+            this.bullets[i].drawRotated();
+            this.bullets[i].move();
+        }
+
+    }
+
+    shootPressed() {
+        this.bullets.push(this.speakerLeft.shoot());
+        this.bullets.push(this.speakerRight.shoot());
     }
 
     clearCanvas() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    addEnemy(i) {
-        this.enemies[i].draw();
-        this.enemies[i].move();
-    }
+    checkCollisions() {
 
-    checkCollisions(i) {
+        // check if the bullet's collision points is within the borders of an enemy 
+        for (let enemy of this.enemies) {
+            for (let bullet of this.bullets) {
+                if (bullet.collisionPt1.x > enemy.x && bullet.collisionPt1.x < enemy.x + enemy.img.width) {
+                    if (bullet.collisionPt1.y > enemy.y && bullet.collisionPt1.y < enemy.y + enemy.img.height) {
+                        enemy.isCollided = true;
+                        bullet.isCollided = true;
+                    }
+                }
+                else if (bullet.collisionPt2.x > enemy.x && bullet.collisionPt2.x < enemy.x + enemy.img.width) {
+                    if (bullet.collisionPt2.y > enemy.y && bullet.collisionPt2.y < enemy.y + enemy.img.height) {
+                        enemy.isCollided = true;
+                        bullet.isCollided = true;
+                    }
+                }
+            }
+        }
 
     }
 
     gameOver() {
         clearInterval(this.intervalID);
+        clearInterval(this.intervalID2);
         alert("game over");
     }
 
