@@ -8,6 +8,7 @@ class Bullet {
         this.y = y;     //660
         this.speed = 30;
         this.rotateAngle = 0;
+        this.isCollided = false;
     }
 
     drawRotated(rotateAngle) {
@@ -20,25 +21,41 @@ class Bullet {
     }
 
     move(rotateAngle) {
-        console.log(this.y);
+        // console.log(this.y);
         this.rotateAngle = rotateAngle;
 
         let intervalID = setInterval(() => {
 
             this.drawRotated(this.rotateAngle);
 
-            this.x += this.speed * Math.sin(rotateAngle * Math.PI / 180);
-            this.y -= this.speed * Math.cos(rotateAngle * Math.PI / 180);
+            this.x += this.speed * Math.sin(this.rotateAngle * Math.PI / 180);
+            this.y -= this.speed * Math.cos(this.rotateAngle * Math.PI / 180);
 
             if (this.y < 0) {
                 clearInterval(intervalID);
             }
         }, 100);
 
+        // this.drawRotated(this.rotateAngle);
+
+        // this.x += this.speed * Math.sin(this.rotateAngle * Math.PI / 180);
+        // this.y -= this.speed * Math.cos(this.rotateAngle * Math.PI / 180);
+
+        // if (this.y < 0) {
+        //     this.vanish();
+        // }
+
     }
 
     checkCollision() {
+        if (this.isCollided) {
+            this.vanish();
+        }
+    }
 
+    vanish() {
+        this.img.src = "";
+        delete this;
     }
 
     getMidPointX() {        //50

@@ -6,6 +6,8 @@ class Speaker {
         this.img = new Image();
         this.img.src = "./images/speaker.png";
         this.rotateAngle = 0;
+        // this.bullets = [new Bullet(this.getMidPointX(), this.getMidPointY(), this.ctx)]
+
 
         // this.bullets = [];
         // for (let i = 0; i < 5; i++) {
@@ -24,8 +26,17 @@ class Speaker {
 
     }
 
-    shoot() {
+    shoot(i) {
+
         let bullet = new Bullet(this.getMidPointX(), this.getMidPointY(), this.ctx);
+        bullet.move(this.rotateAngle);
+
+
+        // if (this.bullets[i].y < 0) {
+        //     this.bullets.push(new Bullet(this.getMidPointX(), this.getMidPointY(), this.ctx));
+        // }
+        // this.bullets[i].move(this.rotateAngle);
+        // this.bullets[i].drawRotated(this.rotateAngle);
 
 
         // tried stuff but did not work...
@@ -46,9 +57,6 @@ class Speaker {
         //     this.bullets.shift();
         // }, 2000);
         // bullet.drawRotated(this.rotateAngle);
-
-
-        bullet.move(this.rotateAngle);
 
     }
 

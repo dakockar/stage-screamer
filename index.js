@@ -1,5 +1,5 @@
-// canvas = document.querySelector("canvas");
-// ctx = this.canvas.getContext("2d");
+canvas = document.querySelector("canvas");
+ctx = this.canvas.getContext("2d");
 
 const game = new Game();
 
@@ -29,6 +29,7 @@ function buildGameOverScreen() {
 let isLeftArrow = false;
 let isRightArrow = false;
 let isShooting = false;
+let shotOnce = false;
 let qIsPressed = false;
 
 
@@ -38,7 +39,7 @@ document.addEventListener("keydown", (event) => {
         qIsPressed = true;
     }
 
-    if (event.key === "ArrowRight") {
+    if (event.key === "ArrowDown") {
         isRightArrow = true;
         isLeftArrow = false;
 
@@ -46,7 +47,7 @@ document.addEventListener("keydown", (event) => {
             game.rotateAngle += 5;
         }
     }
-    else if (event.key === "ArrowLeft") {
+    else if (event.key === "ArrowUp") {
         isRightArrow = false;
         isLeftArrow = true;
 
@@ -59,18 +60,27 @@ document.addEventListener("keydown", (event) => {
     // keydown is sending signal continuously, not only once. how to solve this?
 
     if (event.key === " ") {
-        if (isShooting) {
-            return;
-        }
-        else {
-            isShooting = true;
-        }
+        isShooting = true;
 
     }
 
     // console.log(event.key);
 
 })
+
+
+
+// document.addEventListener("keydown", (event) => {
+//     if (event.key === " ") {
+//         isShooting = true;
+//         setTimeout(() => {
+//             isShooting = false;
+//         }, 200);
+//     }
+
+// }, { once: true });
+
+
 
 document.addEventListener("keyup", (event) => {
 
@@ -82,3 +92,6 @@ document.addEventListener("keyup", (event) => {
 
 
 buildGameScreen();
+
+// let enemy = new Enemy(100, 100, ctx);
+// enemy.draw();
