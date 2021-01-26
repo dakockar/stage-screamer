@@ -10,6 +10,8 @@ let restartButton = document.querySelector("#restart-btn");
 
 let scoreDOM = document.querySelector("#score");
 
+let canFire = true;
+
 
 splashScreenDOM.style.display = "none";
 gameScreenDOM.style.display = "none";
@@ -73,7 +75,13 @@ document.addEventListener("keydown", (event) => {
     // keydown is sending signal continuously, not only once. how to solve this?
 
     if (event.key === " ") {
-        game.shootPressed();
+        if (canFire) {
+            game.shootPressed();
+            canFire = false;
+            setTimeout(() => {
+                canFire = true;
+            }, 800);
+        }
     }
 
     if (event.key === "q") {
