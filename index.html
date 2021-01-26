@@ -6,12 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stage Screamer</title>
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Gorditas&family=Metal+Mania&family=Rock+Salt&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
-    <section id="container">
+    <section id="splash-screen" class="screen">
+        <h1>STAGE SCREAMER</h1>
+        <h2>What to do?</h2>
+        <div class="text">Banish the "haters" by targetting them with your SCREAMS!</div>
+        <h2>Controls</h2>
+        <ul>
+            <li><b>Arrow up:</b> turn the speakers away from each other</li>
+            <li><b>Arrow down:</b> turn the speakers towards each other</li>
+            <li><b>Space:</b> FIRE!</li>
+            <li><b>Q:</b> quit game</li>
+            <li><b>R:</b> restart game</li>
+        </ul>
+        <button id="start-btn" class="btn">START!</button>
+    </section>
+
+    <section id="game-screen" class="screen">
         <canvas width="500px" height="800px"></canvas>
+        <!-- <span class="text">score:</span> -->
+    </section>
+
+    <section id="game-over" class="screen">
+        <div class="text">You've banished <span id="score"></span> haters!</div>
+        <div class="text">That is not enough, you got lynched!</div>
+        <button id="restart-btn" class="btn">TRY AGAIN</button>
     </section>
 
 

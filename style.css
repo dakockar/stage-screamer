@@ -1,19 +1,68 @@
 canvas {
     /* border: 1px solid black; */
+    border-radius: 1%;
+    box-shadow: 0 0 4px 4px rgba(27, 58, 75, 0.3);
+    opacity: 0.9;
 }
 
-#container {
-    background-color: bisque;
+h1 {
+    font-size: 2.5em;
+    padding-top: 10%;
+    padding-bottom: 0;
+    margin: 0;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 0;
+}
+
+body {
+    background-color: rgb(27, 58, 75, 0.4);
+    font-family: 'Architects Daughter', 'Gorditas', 'Metal Mania', 'Rock Salt';
+    font-size: 30px;
+    font-weight: 400;
+    color: #212F45;
+    margin: 0;
+
+}
+
+.screen {
+    height: 1000px;
+    width: 80%;
+    margin: 0 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    /* margin: 20px 200px; */
-    /* padding: */
+    justify-content: center;
 }
 
-button {
-    width: 60px;
-    padding: 5px;
-    margin: 20px;
+.btn {
+    font-family: 'Architects Daughter', 'Rock Salt', cursive;
+    font-size: 2.5em;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    padding-top: 20px;
+    color: #212F45;
+}
+
+#score {
+    font-weight: 800;
+}
+
+.text {
+    margin-top: 0;
+    line-height: 1.8em;
+    text-align: center;
+}
+
+ul {
+    margin-top: 0;
+    line-height: 1.8em;
+}
+
+li {
+    list-style-type: "- ";
 }

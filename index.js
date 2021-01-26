@@ -1,43 +1,57 @@
-// canvas = document.querySelector("canvas");
-// ctx = this.canvas.getContext("2d");
+let isUpArrow = false;
+let isDownArrow = false;
+
+let splashScreenDOM = document.querySelector("#splash-screen");
+let gameScreenDOM = document.querySelector("#game-screen");
+let gameOverScreenDOM = document.querySelector("#game-over");
+
+let startButton = document.querySelector("#start-btn");
+let restartButton = document.querySelector("#restart-btn");
+
+let scoreDOM = document.querySelector("#score");
+
+
+splashScreenDOM.style.display = "none";
+gameScreenDOM.style.display = "none";
+gameOverScreenDOM.style.display = "none";
 
 const game = new Game();
-// let startButton = document.querySelector("button");
 
 
 function buildSplashScreen() {
+    splashScreenDOM.style.display = "flex";
+
 
 }
 
 
 function buildGameScreen() {
+    splashScreenDOM.style.display = "none";
+    gameOverScreenDOM.style.display = "none";
+    gameScreenDOM.style.display = "flex";
+    game.resetGame();
     game.startGame();
-
 }
 
 function buildGameOverScreen() {
-
-
+    gameScreenDOM.style.display = "none";
+    gameOverScreenDOM.style.display = "flex";
+    scoreDOM.innerHTML = game.score;
 }
 
-window.addEventListener("load", () => {
-    buildSplashScreen();
 
+buildSplashScreen();
+
+startButton.addEventListener("click", () => {
+    buildGameScreen();
+})
+
+restartButton.addEventListener("click", () => {
+    buildGameScreen();
 })
 
 
-let isUpArrow = false;
-let isDownArrow = false;
-let qIsPressed = false;
-
-
 document.addEventListener("keydown", (event) => {
-
-    // if (event.key === "Enter") 
-
-    if (event.key === "q") {
-        qIsPressed = true;
-    }
 
     if (event.key === "ArrowDown") {
         isDownArrow = true;
@@ -56,27 +70,19 @@ document.addEventListener("keydown", (event) => {
         }
     }
 
-
     // keydown is sending signal continuously, not only once. how to solve this?
 
     if (event.key === " ") {
         game.shootPressed();
     }
 
-    // console.log(event.key);
-
-})
-
-
-
-document.addEventListener("keyup", (event) => {
-    if (event.key === " ") {
-        isShooting = false;
-        // console.log("space keyup");
+    if (event.key === "q") {
+        game.gameOver();
     }
+
+    if (event.key === "r") {
+        game.gameOver();
+        buildGameScreen();
+    }
+    // console.log(event.key);
 })
-
-
-
-
-// buildGameScreen();
