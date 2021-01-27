@@ -3,8 +3,6 @@ class Game {
     constructor() {
         this.canvas = document.querySelector("canvas");
         this.ctx = this.canvas.getContext("2d");
-        this.intervalID = 0;
-        this.intervalID2 = 0;
         this.bgImg = new Image();
         this.bgImg.src = "./images/bgImg.png";
         this.speakerLeft = new Speaker(0, 620, this.ctx);
@@ -12,8 +10,8 @@ class Game {
         this.rotateAngle = 15;
         this.enemies = [];
         this.bullets = [];
-        this.score = 0;
         this.fadeOutArray = [];
+        this.score = 0;
     }
 
     startGame() {
@@ -47,8 +45,6 @@ class Game {
     updateCanvas() {
 
         this.checkCollisions();
-
-
 
         for (let enemy of this.fadeOutArray) {
             enemy.fadeOut();
@@ -130,6 +126,5 @@ class Game {
         this.bullets = [];
         this.fadeOutArray = [];
         this.score = 0;
-        this.rotateAngle = 15;
     }
 }

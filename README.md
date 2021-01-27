@@ -75,9 +75,26 @@ The score is kept based on the count of the enemies that are killed. If it is le
 - index - buildGameScreen
 - game - startGame
 - game - drawCanvas
-- speaker
+- speaker - getMidPointX
+- speaker - getMidPointY
+- speaker - drawRotated
+- bullet - getMidPointX
+- bullet - getMidPointY
+- bullet - drawRotated
+- bullet - move
+- speaker - shoot
+- game - shootPressed
+- game - updateCanvas
+- enemy - draw
+- enemy - move
+- game - checkEnemyPositions
+- game - gameOver
+- game - checkCollisions
+- game - printScore
 - index - buildSplashScreen
 - index - buildGameOverScreen
+- game - resetGame
+- enemy - fadeOut
 
 
 ## Links
@@ -88,11 +105,11 @@ The score is kept based on the count of the enemies that are killed. If it is le
 
 
 ### Git
-[Repo]https://github.com/dakockar/stage-screamer
+[Repo](https://github.com/dakockar/stage-screamer)
 
-[Deploy]https://dakockar.github.io/stage-screamer/
+[Deploy](https://dakockar.github.io/stage-screamer/)
 
 
 ### Slides
-URls for the project presentation (slides)
-[Link Slides.com](http://slides.com)
+<!-- URls for the project presentation (slides) -->
+[Presentation slides](https://docs.google.com/presentation/d/1ILhqEKDlHVfW3c6UQAN_on4nlDYPc7rHHZ8Xg1LTw8E/edit?usp=sharing)

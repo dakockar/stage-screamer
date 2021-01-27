@@ -26,7 +26,7 @@ class Bullet {
         this.x += this.speed * Math.sin(this.rotateAngle * Math.PI / 180);
         this.y -= this.speed * Math.cos(this.rotateAngle * Math.PI / 180);
 
-        // collision point finding formulas
+        // formulas to calculate the collision points
         // x1 = x - height/2 * sin(rotateAngle)
         // y1 = y + height/2 * cos(rotateAngle)
         // x2 = x1 + height * cos(rotateAngle)

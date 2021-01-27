@@ -47,6 +47,8 @@ function buildGameOverScreen() {
         haterDOM.innerHTML = "haters";
     }
 
+    // these numbers can change in the final product 
+
     if (game.score > 15 && game.score <= 30) {
         winStatDOM.innerHTML = "Wow, you are killing it out there!<br>I bet you can do even better &#9836;&#9834;&#9836;";
     }
