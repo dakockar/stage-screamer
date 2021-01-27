@@ -13,6 +13,7 @@ class Game {
         this.enemies = [];
         this.bullets = [];
         this.score = 0;
+        this.fadeOutArray = [];
     }
 
     startGame() {
@@ -33,24 +34,32 @@ class Game {
     }
 
     drawCanvas() {
-
         this.ctx.drawImage(this.bgImg, 0, 0);
-
-        this.printScore();
 
         this.speakerLeft.drawRotated(this.rotateAngle);
         this.speakerRight.drawRotated(-this.rotateAngle);
 
-        this.updateCanvas();
+        this.printScore();
 
+        this.updateCanvas();
     }
 
     updateCanvas() {
 
         this.checkCollisions();
 
-        this.enemies = this.enemies.filter(elem => !elem.isCollided);
-        this.bullets = this.bullets.filter(elem => elem.y > 0 && !elem.isCollided);
+
+
+        for (let enemy of this.fadeOutArray) {
+            enemy.fadeOut();
+
+            if (enemy.opacity <= 0.2) {
+                this.fadeOutArray.shift();
+            }
+        }
+
+        this.enemies = this.enemies.filter(enemy => !enemy.isCollided);
+        this.bullets = this.bullets.filter(bullet => bullet.y > 0 && !bullet.isCollided);
 
 
         for (let i = 0; i < this.enemies.length; i++) {
@@ -71,22 +80,14 @@ class Game {
         this.bullets.push(this.speakerRight.shoot());
     }
 
-
-    printScore() {
-        // this.ctx.font = "20px 'sans-serif'";
-        this.ctx.font = "20px 'Architects Daughter', 'Rock Salt', 'sans-serif', cursive";
-        this.ctx.fillStyle = "#e8bc82";
-        this.ctx.fillText("score: " + this.score, 30, this.canvas.height - 55);
-    }
-
     checkCollisions() {
-
         // check if the bullet's collision points is within the borders of an enemy 
         for (let enemy of this.enemies) {
             for (let bullet of this.bullets) {
                 if (bullet.collisionPt1.x > enemy.x && bullet.collisionPt1.x < enemy.x + enemy.img.width) {
                     if (bullet.collisionPt1.y > enemy.y && bullet.collisionPt1.y < enemy.y + enemy.img.height) {
                         enemy.isCollided = true;
+                        this.fadeOutArray.push(enemy);
                         bullet.isCollided = true;
                         this.score++;
                     }
@@ -94,13 +95,19 @@ class Game {
                 else if (bullet.collisionPt2.x > enemy.x && bullet.collisionPt2.x < enemy.x + enemy.img.width) {
                     if (bullet.collisionPt2.y > enemy.y && bullet.collisionPt2.y < enemy.y + enemy.img.height) {
                         enemy.isCollided = true;
+                        this.fadeOutArray.push(enemy);
                         bullet.isCollided = true;
                         this.score++;
                     }
                 }
             }
         }
+    }
 
+    printScore() {
+        this.ctx.font = "20px 'Architects Daughter', cursive";
+        this.ctx.fillStyle = "#e8bc82";
+        this.ctx.fillText("score: " + this.score, 30, this.canvas.height - 55);
     }
 
     checkEnemyPositions() {
@@ -121,6 +128,7 @@ class Game {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.enemies = [];
         this.bullets = [];
+        this.fadeOutArray = [];
         this.score = 0;
         this.rotateAngle = 15;
     }

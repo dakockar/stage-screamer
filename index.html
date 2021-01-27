@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stage Screamer</title>
+
+    <!-- style sheet -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Gorditas&family=Metal+Mania&family=Rock+Salt&display=swap"
@@ -18,7 +21,7 @@
     <section id="splash-screen" class="screen">
         <h1>STAGE SCREAMER</h1>
         <h2>What to do?</h2>
-        <div class="text">Banish the "haters" by targetting them with your SCREAMS!</div>
+        <div class="text">Banish the haters by targetting them with your <b>screams</b>!</div>
         <h2>Controls</h2>
         <ul>
             <li><b>Arrow up:</b> turn the speakers away from each other</li>
@@ -32,22 +35,20 @@
 
     <section id="game-screen" class="screen">
         <canvas width="500px" height="800px"></canvas>
-        <!-- <span class="text">score:</span> -->
     </section>
 
     <section id="game-over" class="screen">
-        <div class="text">You've banished <span id="score"></span> haters!</div>
-        <div class="text">That is not enough, you got lynched!</div>
-        <button id="restart-btn" class="btn">TRY AGAIN</button>
+        <div class="text">You've banished <span id="score"></span> <span id="hater-text">haters</span>!</div>
+        <div id="win-stat" class="text">That is not enough, you suck!</div>
+        <button id="restart-btn" class="btn">TRY AGAIN?</button>
     </section>
 
 
-
-
-    <script src="./Bullet.js"></script>
-    <script src="./Enemy.js"></script>
-    <script src="./Speaker.js"></script>
-    <script src="./Game.js"></script>
+    <!-- scripts -->
+    <script src="./bullet.js"></script>
+    <script src="./enemy.js"></script>
+    <script src="./speaker.js"></script>
+    <script src="./game.js"></script>
     <script src="./index.js"></script>
 </body>
 

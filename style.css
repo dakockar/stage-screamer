@@ -1,5 +1,4 @@
 canvas {
-    /* border: 1px solid black; */
     border-radius: 1%;
     box-shadow: 0 0 4px 4px rgba(27, 58, 75, 0.3);
     opacity: 0.9;
@@ -19,18 +18,19 @@ h2 {
 
 body {
     background-color: rgb(27, 58, 75, 0.4);
-    font-family: 'Architects Daughter', 'Gorditas', 'Metal Mania', 'Rock Salt';
+    /* background: linear-gradient(45deg, red, green); */
+    font-family: 'Architects Daughter', cursive;
+    /* 'Gorditas', 'Metal Mania', 'Rock Salt'; */
     font-size: 30px;
     font-weight: 400;
     color: #212F45;
     margin: 0;
-
 }
 
 .screen {
     height: 1000px;
-    width: 80%;
-    margin: 0 10%;
+    width: 90%;
+    margin: 0 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,7 +38,7 @@ body {
 }
 
 .btn {
-    font-family: 'Architects Daughter', 'Rock Salt', cursive;
+    font-family: 'Architects Daughter', cursive;
     font-size: 2.5em;
     font-weight: 800;
     letter-spacing: 0.1em;
@@ -46,6 +46,11 @@ body {
     background-color: rgba(0, 0, 0, 0);
     padding-top: 20px;
     color: #212F45;
+}
+
+#restart-btn {
+    font-size: 2em;
+    padding-top: 100px;
 }
 
 #score {

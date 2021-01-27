@@ -22,13 +22,41 @@ The score is kept based on the count of the enemies that are killed. If it is le
 
 ## Data structure
 <!-- Classes and methods definition. -->
+- index.js
+    - buildSplashScreen()
+    - buildGameScreen()
+    - buildGameOverScreen()
 
-- speaker
+- Game.js
+    - Game()
+    - startGame()
+    - drawCanvas()
+    - updateCanvas()
+    - shootPressed()
+    - checkCollisions()
+    - printScore()
+    - checkEnemyPositions()
+    - gameOver()
+    - resetGame()
+
+- Speaker.js
+    - Speaker(this.x, this.y, this.ctx)
+    - drawRotated(rotateAngle)
     - shoot()
-    - 
-- enemy
-- game
-- bullet
+    - getMidPointX()
+    - getMidPointY()
+
+- Enemy.js
+    - Enemy(this.x, this.y, this.ctx)
+    - draw()
+    - move()
+
+- Bullet
+    - Bullet(this.x, this.y, this.ctx, this.rotateAngle)
+    - drawRotated()
+    - move()
+    - getMidPointX()
+    - getMidPointY()
 
 
 ## States y States Transitions
@@ -36,15 +64,19 @@ The score is kept based on the count of the enemies that are killed. If it is le
 
 - splashScreen
 - gameScreen
-- gameoverScreen (you are famous / you get lynched)
-
+- gameoverScreen (3 different states based on the score)
+    - you suck
+    - can do better
+    - you're a rockstar
 
 ## Task
 
-
-- buildSplashScreen
-- buildGameScreen
-- buildGameOverScreen
+- index - buildGameScreen
+- game - startGame
+- game - drawCanvas
+- speaker
+- index - buildSplashScreen
+- index - buildGameOverScreen
 
 
 
@@ -52,7 +84,7 @@ The score is kept based on the count of the enemies that are killed. If it is le
 
 
 ### Trello
-[Link url](https://trello.com)
+<!-- [Link url](https://trello.com) -->
 
 
 ### Git

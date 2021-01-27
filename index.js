@@ -1,3 +1,6 @@
+
+// variable declaraitons & initializations
+
 let isUpArrow = false;
 let isDownArrow = false;
 
@@ -9,21 +12,19 @@ let startButton = document.querySelector("#start-btn");
 let restartButton = document.querySelector("#restart-btn");
 
 let scoreDOM = document.querySelector("#score");
+let winStatDOM = document.querySelector("#win-stat");
+let haterDOM = document.querySelector("#hater-text");
 
 let canFire = true;
 
+// ------------------------------
 
-splashScreenDOM.style.display = "none";
-gameScreenDOM.style.display = "none";
-gameOverScreenDOM.style.display = "none";
 
-const game = new Game();
 
+// functions
 
 function buildSplashScreen() {
     splashScreenDOM.style.display = "flex";
-
-
 }
 
 
@@ -39,10 +40,38 @@ function buildGameOverScreen() {
     gameScreenDOM.style.display = "none";
     gameOverScreenDOM.style.display = "flex";
     scoreDOM.innerHTML = game.score;
+
+    if (game.score === 1) {
+        haterDOM.innerHTML = "hater";
+    }
+    else {
+        haterDOM.innerHTML = "haters";
+    }
+
+    if (game.score > 1 && game.score <= 5) {
+        winStatDOM.innerHTML = "Wow, you are killing it out there!<br>I bet you can do even better &#9836;&#9834;&#9836;";
+    }
+    else if (game.score > 5) {
+        winStatDOM.innerHTML = "Awesome! You are a rockstar &hearts;<br><br>Can you break your record?";
+        restartButton.innerHTML = "TRY AGAIN!"
+    }
+
 }
 
+//-------------------------------------------------
+
+
+splashScreenDOM.style.display = "none";
+gameScreenDOM.style.display = "none";
+gameOverScreenDOM.style.display = "none";
+
+const game = new Game();
 
 buildSplashScreen();
+
+
+
+// event listeners
 
 startButton.addEventListener("click", () => {
     buildGameScreen();
@@ -72,7 +101,7 @@ document.addEventListener("keydown", (event) => {
         }
     }
 
-    // keydown is sending signal continuously, not only once. how to solve this?
+    // cooldown added for firing shots
 
     if (event.key === " ") {
         if (canFire) {
