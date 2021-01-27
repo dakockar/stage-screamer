@@ -27,7 +27,6 @@ function buildSplashScreen() {
     splashScreenDOM.style.display = "flex";
 }
 
-
 function buildGameScreen() {
     splashScreenDOM.style.display = "none";
     gameOverScreenDOM.style.display = "none";
@@ -48,14 +47,13 @@ function buildGameOverScreen() {
         haterDOM.innerHTML = "haters";
     }
 
-    if (game.score > 1 && game.score <= 5) {
+    if (game.score > 15 && game.score <= 30) {
         winStatDOM.innerHTML = "Wow, you are killing it out there!<br>I bet you can do even better &#9836;&#9834;&#9836;";
     }
-    else if (game.score > 5) {
+    else if (game.score > 30) {
         winStatDOM.innerHTML = "Awesome! You are a rockstar &hearts;<br><br>Can you break your record?";
         restartButton.innerHTML = "TRY AGAIN!"
     }
-
 }
 
 //-------------------------------------------------
