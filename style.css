@@ -38,6 +38,27 @@ body {
     justify-content: center;
 }
 
+#mystic {
+    background-image: url(./images/mystic.png);
+    /* position: relative; */
+    opacity: 0.1;
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    /* opacity: 0.75; */
+}
+
+#splash-screen {
+    /* background-image: url("<a href='https://www.freepik.com/vectors/background'>Background vector created by macrovector - www.freepik.com</a>"); */
+    /* background-image: url(./images/stageImg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; */
+
+}
+
 .btn {
     font-family: 'Architects Daughter', cursive;
     font-size: 2.5em;

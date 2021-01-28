@@ -137,4 +137,5 @@ class Game {
         this.fadeOutArray = [];
         this.score = 0;
     }
+
 }

@@ -48,6 +48,7 @@ enemyDieSnd.volume = 0.5;
 
 function buildSplashScreen() {
     splashScreenDOM.style.display = "flex";
+    splashScrSong.currentTime = 0;
     splashScrSong.play();
     mainSong.currentTime = 0;
 }
