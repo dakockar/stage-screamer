@@ -10,6 +10,7 @@ let gameOverScreenDOM = document.querySelector("#game-over");
 
 let startButton = document.querySelector("#start-btn");
 let restartButton = document.querySelector("#restart-btn");
+let unmuteButton = document.querySelector("#unmute-btn");
 
 let scoreDOM = document.querySelector("#score");
 let winStatDOM = document.querySelector("#win-stat");
@@ -21,10 +22,9 @@ let canScream = true;
 
 let splashScrSong = document.querySelector("#splash-scr-song");
 let mainSong = document.querySelector("#main-song");
-let badEnding = document.querySelector("#bad-ending");
+let ending = document.querySelector("#ending");
 
 
-let endReact = document.querySelector("#end-react");
 let enemyDieSnd = document.querySelector("#enemy-die");
 
 // TODO: add more dying sounds
@@ -36,7 +36,7 @@ let currTimeArr = [9.6, 19.2];
 
 splashScrSong.volume = 0.5;
 mainSong.volume = 0.2;
-badEnding.volume = 0.3;
+ending.volume = 0.3;
 
 enemyDieSnd.volume = 0.5;
 
@@ -48,15 +48,18 @@ enemyDieSnd.volume = 0.5;
 
 function buildSplashScreen() {
     splashScreenDOM.style.display = "flex";
+    // splashScrSong.play();        // instead, I used autoplay and an unmute button
     splashScrSong.currentTime = 0;
-    splashScrSong.play();
+
+
+
     mainSong.currentTime = 0;
 }
 
 function buildGameScreen() {
     splashScrSong.pause();
-    badEnding.pause();
-    badEnding.currentTime = 0;
+    ending.pause();
+    ending.currentTime = 0;
 
     splashScreenDOM.style.display = "none";
     gameOverScreenDOM.style.display = "none";
@@ -88,23 +91,24 @@ function buildGameOverScreen() {
     // these numbers can change in the final product 
 
     if (game.score <= 15) {
-        // TODO: change endreact audio src
-        // endReact.src = "";
-        badEnding.play();
-        // endReact.play();
+
+        ending.src = "./sounds/ss - bad ending.mp3";
+        ending.play();
+
+        winStatDOM.innerHTML = "That is not enough, you suck!"
     }
     else if (game.score > 15 && game.score <= 30) {
 
-        // TODO: change endreact audio src
-        // endReact.src = "";
-        // endReact.play();
+        // TODO: change ending audio src
+        // ending.src = "";
+        // ending.play();
 
         winStatDOM.innerHTML = "Wow, you are killing it out there!<br>I bet you can do even better &#9836;&#9834;&#9836;";
     }
     else if (game.score > 30) {
-        // TODO: change endreact audio src
-        // endReact.src = "";
-        // endReact.play();
+        // TODO: change ending audio src
+        // ending.src = "";
+        // ending.play();
 
         winStatDOM.innerHTML = "Awesome! You are a rockstar &hearts;<br><br>Can you break your record?";
         restartButton.innerHTML = "TRY AGAIN!"
@@ -120,11 +124,14 @@ gameOverScreenDOM.style.display = "none";
 
 const game = new Game();
 
+
 buildSplashScreen();
 
 
-
 // event listeners
+
+
+
 
 startButton.addEventListener("click", () => {
     buildGameScreen();
@@ -133,6 +140,12 @@ startButton.addEventListener("click", () => {
 restartButton.addEventListener("click", () => {
     buildGameScreen();
 })
+
+unmuteButton.addEventListener("click", () => {
+    splashScrSong.currentTime = 0;
+    splashScrSong.muted = false;
+})
+
 
 
 document.addEventListener("keydown", (event) => {

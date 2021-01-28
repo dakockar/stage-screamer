@@ -135,6 +135,7 @@ class Game {
         this.enemies = [];
         this.bullets = [];
         this.fadeOutArray = [];
+        this.rotateAngle = 15;
         this.score = 0;
     }
 

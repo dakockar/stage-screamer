@@ -17,14 +17,14 @@
 </head>
 
 <body>
-    <audio loop id="splash-scr-song" src="./sounds/ss - splash screen.mp3"></audio>
+    <audio loop autoplay muted id="splash-scr-song" src="./sounds/ss - splash screen.mp3"></audio>
     <audio loop id="main-song" src="./sounds/ss - main song.mp3"></audio>
-    <audio id="end-react" src="./sounds/awww.mp3"></audio>
     <audio id="enemy-die" src="./sounds//die1.mp3"></audio>
-    <audio id="bad-ending" src="./sounds/ss - bad ending.mp3"></audio>
+    <audio id="ending" src=""></audio>
 
 
     <section id="splash-screen" class="screen">
+        <button id="unmute-btn" class="btn">wanna hear the music?<br>unmute</button>
         <h1>STAGE SCREAMER</h1>
         <h2>What to do?</h2>
         <div class="text">Banish the haters by targetting them with your <b>screams</b>!</div>
@@ -32,7 +32,7 @@
         <ul>
             <li><b>Arrow up:</b> turn the speakers away from each other</li>
             <li><b>Arrow down:</b> turn the speakers towards each other</li>
-            <li><b>Space:</b> FIRE!</li>
+            <li><b>Space:</b> SCREAM!</li>
             <li><b>Q:</b> quit game</li>
             <li><b>R:</b> restart game</li>
         </ul>
@@ -47,6 +47,8 @@
         <div class="text">You've banished <span id="score"></span> <span id="hater-text">haters</span>!</div>
         <div id="win-stat" class="text">That is not enough, you suck!</div>
         <button id="restart-btn" class="btn">TRY AGAIN?</button>
+        <br>
+        <div id="small-text" class="text">Press R to restart &#8634;</div>
     </section>
 
 
