@@ -16,6 +16,29 @@ let winStatDOM = document.querySelector("#win-stat");
 let haterDOM = document.querySelector("#hater-text");
 
 let canFire = true;
+let canScream = true;
+
+
+let splashScrSong = document.querySelector("#splash-scr-song");
+let mainSong = document.querySelector("#main-song");
+let badEnding = document.querySelector("#bad-ending");
+
+
+let endReact = document.querySelector("#end-react");
+let enemyDieSnd = document.querySelector("#enemy-die");
+
+// TODO: add more dying sounds
+let enemyDieSndArr = ["./sounds/die1.mp3", "./sounds/die2.mp3"];
+
+
+
+let currTimeArr = [9.6, 19.2];
+
+splashScrSong.volume = 0.5;
+mainSong.volume = 0.2;
+badEnding.volume = 0.3;
+
+enemyDieSnd.volume = 0.5;
 
 // ------------------------------
 
@@ -25,19 +48,33 @@ let canFire = true;
 
 function buildSplashScreen() {
     splashScreenDOM.style.display = "flex";
+    splashScrSong.play();
+    mainSong.currentTime = 0;
 }
 
 function buildGameScreen() {
+    splashScrSong.pause();
+    badEnding.pause();
+    badEnding.currentTime = 0;
+
     splashScreenDOM.style.display = "none";
     gameOverScreenDOM.style.display = "none";
     gameScreenDOM.style.display = "flex";
+
+    game.isGameOver = false;
+
     game.resetGame();
     game.startGame();
+    mainSong.play();
 }
 
 function buildGameOverScreen() {
     gameScreenDOM.style.display = "none";
     gameOverScreenDOM.style.display = "flex";
+    mainSong.pause();
+    mainSong.currentTime = currTimeArr[1];
+
+
     scoreDOM.innerHTML = game.score;
 
     if (game.score === 1) {
@@ -49,10 +86,25 @@ function buildGameOverScreen() {
 
     // these numbers can change in the final product 
 
-    if (game.score > 15 && game.score <= 30) {
+    if (game.score <= 15) {
+        // TODO: change endreact audio src
+        // endReact.src = "";
+        badEnding.play();
+        // endReact.play();
+    }
+    else if (game.score > 15 && game.score <= 30) {
+
+        // TODO: change endreact audio src
+        // endReact.src = "";
+        // endReact.play();
+
         winStatDOM.innerHTML = "Wow, you are killing it out there!<br>I bet you can do even better &#9836;&#9834;&#9836;";
     }
     else if (game.score > 30) {
+        // TODO: change endreact audio src
+        // endReact.src = "";
+        // endReact.play();
+
         winStatDOM.innerHTML = "Awesome! You are a rockstar &hearts;<br><br>Can you break your record?";
         restartButton.innerHTML = "TRY AGAIN!"
     }
@@ -111,6 +163,15 @@ document.addEventListener("keydown", (event) => {
                 canFire = true;
             }, 800);
         }
+
+        if (canScream) {
+            // screamAudio.play
+
+            canScream = false;
+            setTimeout(() => {
+                canScream = true;
+            }, 1500);
+        }
     }
 
     if (event.key === "q") {
@@ -118,8 +179,9 @@ document.addEventListener("keydown", (event) => {
     }
 
     if (event.key === "r") {
-        game.gameOver();
-        buildGameScreen();
+        if (game.isGameOver) {
+            buildGameScreen();
+        }
     }
     // console.log(event.key);
 })

@@ -12,6 +12,8 @@ class Game {
         this.bullets = [];
         this.fadeOutArray = [];
         this.score = 0;
+        this.isGameOver = false;
+        this.rN = 0;
     }
 
     startGame() {
@@ -25,6 +27,8 @@ class Game {
         }, 50);
 
         this.intervalID2 = setInterval(() => {
+            this.rN = Math.floor(Math.random() * enemyDieSndArr.length);
+
             let randomNum = Math.floor(Math.random() * (this.canvas.width - 140)) + 30;
             this.enemies.push(new Enemy(randomNum, -50, this.ctx));
         }, 800)
@@ -86,6 +90,8 @@ class Game {
                         this.fadeOutArray.push(enemy);
                         bullet.isCollided = true;
                         this.score++;
+                        enemyDieSnd.src = enemyDieSndArr[this.rN];
+                        enemyDieSnd.play();
                     }
                 }
                 else if (bullet.collisionPt2.x > enemy.x && bullet.collisionPt2.x < enemy.x + enemy.img.width) {
@@ -94,6 +100,9 @@ class Game {
                         this.fadeOutArray.push(enemy);
                         bullet.isCollided = true;
                         this.score++;
+                        enemyDieSnd.src = enemyDieSndArr[this.rN];
+                        enemyDieSnd.play();
+
                     }
                 }
             }
@@ -117,6 +126,7 @@ class Game {
     gameOver() {
         clearInterval(this.intervalID);
         clearInterval(this.intervalID2);
+        this.isGameOver = true;
         buildGameOverScreen();
     }
 

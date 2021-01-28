@@ -65,7 +65,7 @@ The score is kept based on the count of the enemies that are killed. If it is le
 
 - splashScreen
 - gameScreen
-- gameoverScreen (3 different states based on the score)
+- gameOverScreen (3 different states based on the score)
     - you suck
     - ok, but can do better
     - you're a rockstar

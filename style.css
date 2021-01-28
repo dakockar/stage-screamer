@@ -17,7 +17,8 @@ h2 {
 }
 
 body {
-    background-color: rgb(27, 58, 75, 0.4);
+    /* background-color: rgb(27, 58, 75, 0.4); */
+    background: radial-gradient(#78909ccc, #1b3a4bcc);
     /* background: linear-gradient(45deg, red, green); */
     font-family: 'Architects Daughter', cursive;
     /* 'Gorditas', 'Metal Mania', 'Rock Salt'; */
