@@ -26,19 +26,16 @@ let ending = document.querySelector("#ending");
 
 
 let enemyDieSnd = document.querySelector("#enemy-die");
-
-// TODO: add more dying sounds
-let enemyDieSndArr = ["./sounds/die1.mp3", "./sounds/die2.mp3"];
+let enemyDieSndArr = ["./sounds/die1.mp3", "./sounds/die2.mp3", "./sounds/die3.mp3", "./sounds/die4.mp3"];
 
 
 
 let currTimeArr = [9.6, 19.2];
 
-splashScrSong.volume = 0.5;
+splashScrSong.volume = 0.35;
 mainSong.volume = 0.2;
-ending.volume = 0.3;
-
-enemyDieSnd.volume = 0.5;
+ending.volume = 0.5;
+enemyDieSnd.volume = 0.3;
 
 // ------------------------------
 
@@ -88,27 +85,29 @@ function buildGameOverScreen() {
         haterDOM.innerHTML = "haters";
     }
 
-    // these numbers can change in the final product 
+    // the numbers can change in the final product 
 
-    if (game.score <= 15) {
+    if (game.score <= 10) {
 
         ending.src = "./sounds/ss - bad ending.mp3";
         ending.play();
 
         winStatDOM.innerHTML = "That is not enough, you suck!"
     }
-    else if (game.score > 15 && game.score <= 30) {
 
-        // TODO: change ending audio src
-        // ending.src = "";
-        // ending.play();
+    // this part is omitted for now
+    // else if (game.score > 15 && game.score <= 30) {
 
-        winStatDOM.innerHTML = "Wow, you are killing it out there!<br>I bet you can do even better &#9836;&#9834;&#9836;";
-    }
-    else if (game.score > 30) {
-        // TODO: change ending audio src
-        // ending.src = "";
-        // ending.play();
+    //     // TODO: change ending audio src
+    //     // ending.src = "";
+    //     // ending.play();
+
+    //     winStatDOM.innerHTML = "Wow, you are killing it out there!<br>I bet you can do even better &#9836;&#9834;&#9836;";
+    // }
+    else if (game.score > 10) {
+
+        ending.src = "./sounds/ss - good ending.mp3";
+        ending.play();
 
         winStatDOM.innerHTML = "Awesome! You are a rockstar &hearts;<br><br>Can you break your record?";
         restartButton.innerHTML = "TRY AGAIN!"
@@ -129,8 +128,6 @@ buildSplashScreen();
 
 
 // event listeners
-
-
 
 
 startButton.addEventListener("click", () => {

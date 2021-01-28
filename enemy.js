@@ -28,7 +28,6 @@ class Enemy {
 
     fadeOut() {
         this.opacity -= 0.2;
-
         this.ctx.globalAlpha = this.opacity;
         this.draw();
         this.ctx.globalAlpha = 1;

@@ -24,10 +24,10 @@ class Game {
                 //this.drawCanvas directly as a callback function didn't work here ("this" returned undefined)
                 this.drawCanvas();
             });
+            this.rN = Math.floor(Math.random() * enemyDieSndArr.length);
         }, 50);
 
         this.intervalID2 = setInterval(() => {
-            this.rN = Math.floor(Math.random() * enemyDieSndArr.length);
 
             let randomNum = Math.floor(Math.random() * (this.canvas.width - 140)) + 30;
             this.enemies.push(new Enemy(randomNum, -50, this.ctx));

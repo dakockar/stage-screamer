@@ -57,8 +57,13 @@ body {
 
 #unmute-btn {
     font-size: 13px;
-    color: #4c1b59;
+    color: black;
     margin-left: 85%;
+    border-radius: 5%;
+    padding-top: 3px;
+    background-color: #1b3a4bcc;
+    opacity: 0.7;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 #score {
@@ -73,6 +78,13 @@ body {
 
 #small-text {
     font-size: 20px;
+}
+
+#music-text {
+    font-weight: 800;
+    font-size: 13px;
+    margin-left: 85%;
+    margin-top: 5%
 }
 
 ul {
