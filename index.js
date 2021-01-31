@@ -87,7 +87,7 @@ function buildGameOverScreen() {
 
     // the numbers can change in the final product 
 
-    if (game.score <= 10) {
+    if (game.score <= 30) {
 
         ending.src = "./sounds/ss - bad ending.mp3";
         ending.play();
@@ -104,7 +104,7 @@ function buildGameOverScreen() {
 
     //     winStatDOM.innerHTML = "Wow, you are killing it out there!<br>I bet you can do even better &#9836;&#9834;&#9836;";
     // }
-    else if (game.score > 10) {
+    else if (game.score > 30) {
 
         ending.src = "./sounds/ss - good ending.mp3";
         ending.play();
