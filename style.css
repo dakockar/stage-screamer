@@ -6,7 +6,6 @@ canvas {
 
 h1 {
     font-size: 2.5em;
-    padding-top: 10%;
     padding-bottom: 0;
     margin: 0;
     text-align: center;
@@ -29,7 +28,7 @@ body {
 }
 
 .screen {
-    height: 1000px;
+    height: 900px;
     width: 90%;
     margin: 0 5%;
     display: flex;
@@ -41,12 +40,11 @@ body {
 
 .btn {
     font-family: 'Architects Daughter', cursive;
-    font-size: 2.5em;
+    font-size: 2.3em;
     font-weight: 800;
     letter-spacing: 0.1em;
     border: none;
     background-color: rgba(0, 0, 0, 0);
-    padding-top: 20px;
     color: #212F45;
 }
 
@@ -94,4 +92,16 @@ ul {
 
 li {
     list-style-type: "- ";
+}
+
+footer {
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 10px;
+    ;
+}
+
+a {
+    text-decoration: none;
+    color: rgba(27, 58, 75, 1)
 }
